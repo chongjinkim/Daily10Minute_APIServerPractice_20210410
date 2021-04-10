@@ -50,6 +50,13 @@ class LoginActivity : BaseActivity() {
 
                         val nickname = userObj.getString("nick_name")
 
+                        //서버가 내려주는 토큰 값 추출
+                        val token = dataObj.getString("token")
+
+                        //sharedPreferences에 지정 : 기기에 보관(전원이 나가도 유지)
+
+
+
                         runOnUiThread {
 
                             Toast.makeText(mContext, "${nickname}님 환영합니다.", Toast.LENGTH_SHORT).show()
