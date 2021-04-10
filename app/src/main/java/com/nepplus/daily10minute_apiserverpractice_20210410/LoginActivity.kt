@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject
 
-class MainActivity : BaseActivity() {
+class LoginActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_login)
         setupEvents()
         setValues()
     }//onCreate에 적혀있는 함수들은 무조건 추가가된다. - 안에있는 함수들도 무조건 실행을 해주어야 한다.
