@@ -63,7 +63,7 @@ class LoginActivity : BaseActivity() {
 
                         //sharedPreferences에 지정 : 기기에 보관(전원이 나가도 유지)
 
-
+                        ContextUtil.setLoginToken(mContext, token)
 
                         runOnUiThread {
 
