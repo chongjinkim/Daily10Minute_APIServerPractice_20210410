@@ -1,5 +1,6 @@
 package com.nepplus.daily10minute_apiserverpractice_20210410
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
@@ -17,6 +18,15 @@ class LoginActivity : BaseActivity() {
     }//onCreate에 적혀있는 함수들은 무조건 추가가된다. - 안에있는 함수들도 무조건 실행을 해주어야 한다.
 
     override fun setupEvents() {
+
+        signUpBtn.setOnClickListener {
+
+            val myIntent = Intent(this, SignUpActivity::class.java)
+
+            startActivity(myIntent)
+
+        }
+
 
         loginBtn.setOnClickListener {
 

@@ -2,6 +2,7 @@ package com.nepplus.daily10minute_apiserverpractice_20210410
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import kotlinx.android.synthetic.main.activity_sign_up.*
 
 class SignUpActivity : BaseActivity() {
 
@@ -14,6 +15,17 @@ class SignUpActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        signUpBtn.setOnClickListener {
+
+            val inputEmail = emailEdt.text.toString()
+            val inputPw = passwordEdt.text.toString()
+            val inputNickname = nicknameEdt.text.toString()
+
+
+
+
+        }
 
     }
 
