@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
 
      //서버에 로그인 요청
 
-         ServerUtil.postRequestLogin(inputEmail, inputPassword)
+            ServerUtil.postRequestLogin(inputEmail, inputPassword)
 
         }
     }
