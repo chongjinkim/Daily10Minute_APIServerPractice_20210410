@@ -23,7 +23,7 @@ class LoginActivity : BaseActivity() {
      // sharedPreferences에 어떻게 변화되었는지(체크 / 해제) 저장 예제
         autoLoginCheckBox.setOnCheckedChangeListener { buttonView, isChecked ->
 
-            Log.d("자동로그인체크여부", isChecked.toString())
+            ContextUtil.setAutoLogin(mContext, isChecked)
 
         }
 
@@ -97,6 +97,8 @@ class LoginActivity : BaseActivity() {
 
     override fun setValues() {
 
+//        Contextutl로 저장해둔 자동 로그인여부를 꺼내서 => 체크박스에 반영.
+        autoLoginCheckBox.isChecked = ContextUtil.getAutoLogin(mContext)
     }
 
 }
