@@ -52,7 +52,6 @@ class SignUpActivity : BaseActivity() {
 
     }
 
-    }
 
     override fun setValues() {
 
