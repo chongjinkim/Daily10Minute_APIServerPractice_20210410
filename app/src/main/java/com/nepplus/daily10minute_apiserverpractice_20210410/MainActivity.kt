@@ -21,6 +21,10 @@ class MainActivity : BaseActivity() {
         val inputEmail = emailEdt.text.toString()
         val inputPassword = passwordEdt.text.toString()
 
+     //서버에 로그인 요청
+
+
+
         }
     }
 
