@@ -1,7 +1,7 @@
 package com.nepplus.daily10minute_apiserverpractice_20210410
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -23,7 +23,7 @@ class MainActivity : BaseActivity() {
 
      //서버에 로그인 요청
 
-
+         ServerUtil.postRequestLogin(inputEmail, inputPassword)
 
         }
     }
