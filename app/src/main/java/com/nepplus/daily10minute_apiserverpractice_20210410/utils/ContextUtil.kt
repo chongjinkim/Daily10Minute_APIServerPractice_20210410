@@ -1,4 +1,4 @@
-package com.nepplus.daily10minute_apiserverpractice_20210410
+package com.nepplus.daily10minute_apiserverpractice_20210410.utils
 
 import android.content.Context
 

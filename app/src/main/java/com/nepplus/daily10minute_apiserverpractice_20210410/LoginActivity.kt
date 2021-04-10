@@ -2,8 +2,8 @@ package com.nepplus.daily10minute_apiserverpractice_20210410
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
+import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ContextUtil
 import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_login.*
 import org.json.JSONObject

@@ -2,6 +2,7 @@ package com.nepplus.daily10minute_apiserverpractice_20210410.utils
 
 import android.util.Log
 import okhttp3.*
+import okhttp3.HttpUrl.Companion.toHttpUrlOrNull
 import org.json.JSONObject
 import java.io.IOException
 import kotlin.math.log
@@ -124,6 +125,24 @@ class ServerUtil {
 
 
             })
+        }
+
+        fun getRequestEmailCheck(email : String, handler: JsonResponseHandler?){
+//    어디로 + 어떤데이터 => URL을 만들 때 한꺼번에 전부 적어야한다.
+//            주소로 적는게 복잡할 예정 => 호스트주소 / email_chek
+//             urlBuilder
+
+            val urlBuilder = "${HOST_URL}/email_check".toHttpUrlOrNull()!!.newBuilder()
+
+//            만들어진 기초 url에 필요한 파라미터들을 붙여주자
+            urlBuilder.addEncodedQueryParameter("email", email)
+
+//       붙일 정보는 다 붙였으면 최종 String형태로 변환
+
+            val urlString = urlBuilder.build().toString()
+
+            Log.d("가공된URL", urlString)
+
         }
     }
 
