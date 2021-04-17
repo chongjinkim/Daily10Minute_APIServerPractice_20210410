@@ -56,6 +56,16 @@ class MainActivity : BaseActivity() {
 
     override fun setValues() {
 
+
+        projectListView.setOnItemClickListener { parent, view, position, id ->
+
+            val clickedProject = mProjects[position]
+
+
+
+        }
+
+
    //서버에서 => 보여줄 프로젝트 목록이 어떤것들이 있는지 받아서 => project()형태로 변환해서 => mProjects에 하나하나 추가
 
         getProjectListFromServer()
