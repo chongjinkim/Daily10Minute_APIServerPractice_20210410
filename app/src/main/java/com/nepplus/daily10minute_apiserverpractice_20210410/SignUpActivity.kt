@@ -26,7 +26,27 @@ class SignUpActivity : BaseActivity() {
 
 //            서버에 중복인지 아닌지 물어보는 기능 api활용 => 그 결과를 텍스트뷰에 반영(UI 반영)
 
-            ServerUtil.getRequestEmailCheck(inputEmail, null)
+            ServerUtil.getRequestEmailCheck(inputEmail, object : ServerUtil.JsonResponseHandler{
+
+                override fun onResponse(jsonObj: JSONObject) {
+
+                    val code = jsonObj.getInt("code")
+
+                    runOnUiThread {
+
+                        if(code == 200){
+                            emailCheckResultTxt.text = "사용해도 좋은 이메일 입니다."
+                        }
+
+                        else{
+                            emailCheckResultTxt.text = "중복된 이메일 이라 사용을 할 수 없습니다."
+                        }
+
+                    }
+
+                }
+
+            })
 
 
         }
