@@ -49,6 +49,8 @@ class MainActivity : BaseActivity() {
 
                     val project = Project.getProjectFromJson(projectObj)
 
+                    mProjects.add(project)
+
                 }
 
 
