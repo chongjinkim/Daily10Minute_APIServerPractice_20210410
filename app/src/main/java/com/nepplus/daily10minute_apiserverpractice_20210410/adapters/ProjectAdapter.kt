@@ -5,6 +5,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
 import com.nepplus.daily10minute_apiserverpractice_20210410.R
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Project
 import java.util.ArrayList
@@ -27,6 +29,13 @@ class ProjectAdapter(
 
         //데이터 반영이 안되고 틀만 만들었다.
         val row = tempRow!!
+
+        val data = mList[position]
+
+       val projectBackgroundImg = row.findViewById<ImageView>(R.id.projectBackgroundImg)
+       val projectProfileText = row.findViewById<TextView>(R.id.profileTitleText)
+
+       projectProfileText.text = data.title
 
         return row
     }
