@@ -110,6 +110,7 @@ class ServerUtil {
                 .put(formData)
                 .build()
 
+
             val client = OkHttpClient()
             client.newCall(request).enqueue(object : Callback{
                 override fun onFailure(call: Call, e: IOException) {
@@ -142,6 +143,39 @@ class ServerUtil {
             val urlString = urlBuilder.build().toString()
 
             Log.d("가공된URL", urlString)
+
+// 어디로 + 어떤 데이터 ? => 모두 UrlString에 적혀있는 상태
+//            어떤 메쏘드?get => Request에 담아주자
+        val request = Request.Builder()
+                .url(urlString)
+                .get()
+                .build()
+
+            val client = OkHttpClient()
+
+            client.newCall(request).enqueue(object : Callback{
+
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+   //response전체 > 본문 추출 > JSONobject 변환 > 이 기능을 불러낸 화면에 전달.
+                    val bodyString = response.body!!.string()
+
+     //한글이 깨져있으니 jsonObj 변환
+                    val jsonObj = JSONObject(bodyString)
+
+                    Log.d("서버응답", jsonObj.toString())
+
+                    handler?.onResponse(jsonObj)
+
+                }
+
+
+            })
+
 
         }
     }
