@@ -234,6 +234,69 @@ class ServerUtil {
 
         }
 
+        fun postRequestApplyProject(context : Context, projectId : Int , handler : JsonResponseHandler?) {
+
+//            어느 주소로 가야하는가?/기능주소
+//
+
+            val urlString = "${HOST_URL}/project"
+
+
+//            갈때 어떤 파라미터를 가져가야 하는가? POST VS GET에 따라 다르다.
+//            post - formData
+
+            val formData = FormBody.Builder()
+                .add("project_id", projectId.toString())
+                .build()
+
+//            모든 정보 종합 + 어떤 메쏘드?
+
+            val request = Request.Builder()
+                .url(urlString)//어디로 가는지
+                .post(formData)//post방식 - 필요 데이터(formData)들고 가도록
+                .header("X-Http-Token", ContextUtil.getLoginToken(context))
+                .build()
+
+//            정리된 정보를 들고 => 실제 api 요청 진행
+
+//            클라이언트로써 동작하는 코드를 쉽게 작성하도록 도와주는 라이브러리 : OkHttp
+            val client = OkHttpClient()
+
+            client.newCall(request).enqueue(object : Callback {
+                override fun onFailure(call: Call, e: IOException) {
+//                    서버에 연결 자체를 실패 (서버를 접근 할 수 없는 상황.)
+//                    데이터 요금 소진, 서버가 터짐 등드의 이유로 연결 자체에 실패
+//                    반대 - 로그인 비번 틀림, 회원가입 이메일 중복 등등 로직 실패 - 연결은 성공, 결과는 실패
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+//                    서버에 응답을 받아내는 데 성공한 경우
+//                    응답(response) > 내부의 본문(body)만 활용 > String 형태로 저장
+
+                    val bodyString = response.body!!.string() //toString아니다 String으로 활용
+
+//                    bodyString은 인코딩 되어이쓴 상태라 => 사람이 읽기가 어렵다(한글 깨짐)
+//                    bodyString -> jsonObject로 변환시키면 => 읽을 수 있게 함
+
+                    val jsonObj = JSONObject(bodyString)
+
+                    Log.d("서버응답", jsonObj.toString())
+
+//                    받아낸 서버 응답 내용은 => 여기(ServerUtil)서 활용하는 게 아니라
+//                     화면에서 UI에 반영하기 위한 재료로 사용
+//                    Code : 400 => 로그인 실패 토스트(메인)
+
+//                    우리가 완성해낸 jsonObj변수를 -> 액티비티에 넘겨주자 => 파싱 등의 처리는 액티비티에서 작성
+                    handler?.onResponse(jsonObj)//가이드북 적혀있다면 실행
+
+                }
+
+
+            })
+
+        }
+
 
     }
 

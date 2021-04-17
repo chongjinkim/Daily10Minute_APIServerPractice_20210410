@@ -7,7 +7,9 @@ import android.util.Log
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Project
+import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_view_project_detail.*
+import org.json.JSONObject
 
 class ViewProjectDetailActivity : BaseActivity() {
 
@@ -22,7 +24,19 @@ class ViewProjectDetailActivity : BaseActivity() {
 
     override fun setupEvents() {
 
+        applyBtn.setOnClickListener {
 
+ //서버에서 참여의사 전달
+            ServerUtil.postRequestApplyProject(mContext, mProject.id, object : ServerUtil.JsonResponseHandler{
+
+                override fun onResponse(jsonObj: JSONObject) {
+
+
+                }
+
+            })
+
+        }
 
     }
 
