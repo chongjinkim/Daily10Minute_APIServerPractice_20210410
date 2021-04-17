@@ -1,11 +1,13 @@
 package com.nepplus.daily10minute_apiserverpractice_20210410
 
 import android.content.DialogInterface
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.appcompat.app.AlertDialog
 import com.nepplus.daily10minute_apiserverpractice_20210410.adapters.ProjectAdapter
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Project
+import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ContextUtil
 import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
 import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
@@ -34,6 +36,15 @@ class MainActivity : BaseActivity() {
             alert.setMessage("정말 로그아웃 하시겠습니까?")
             alert.setPositiveButton("확인", DialogInterface.OnClickListener { dialog, which ->
 
+//          로그인 : 아이디 / 비번 서버전달 => 회원이 맞는 지 검사. => 성공 시 토큰 값을 전달 => 앱에서 토큰을 저장.
+//          로그아웃 : 기기에 저장된 토큰값을 삭제
+//
+             ContextUtil.setLoginToken(mContext, "")
+
+             val myIntent = Intent(mContext, LoginActivity::class.java)
+             startActivity(myIntent)
+
+             finish()
 
             })
             alert.setNegativeButton("취소", null)
