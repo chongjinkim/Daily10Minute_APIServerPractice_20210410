@@ -234,6 +234,7 @@ class ServerUtil {
 
         }
 
+//    프로젝트 참가 신청하기
         fun postRequestApplyProject(context : Context, projectId : Int , handler : JsonResponseHandler?) {
 
 //            어느 주소로 가야하는가?/기능주소
@@ -294,6 +295,59 @@ class ServerUtil {
 
 
             })
+
+        }
+
+//    프로젝트 포기하기
+        fun deleteRequestGiveUpProject(context: Context, projectId: Int, handler: JsonResponseHandler?){
+//    어디로 + 어떤데이터 => URL을 만들 때 한꺼번에 전부 적어야한다.
+//            주소로 적는게 복잡할 예정 => 호스트주소 / email_chek
+//             urlBuilder
+
+            val urlBuilder = "${HOST_URL}/project".toHttpUrlOrNull()!!.newBuilder()
+
+//            만들어진 기초 url에 필요한 파라미터들을 붙여주자
+            urlBuilder.addEncodedQueryParameter("project_id", projectId.toString())
+
+//       붙일 정보는 다 붙였으면 최종 String형태로 변환
+
+            val urlString = urlBuilder.build().toString()
+
+            Log.d("가공된URL", urlString)
+
+// 어디로 + 어떤 데이터 ? => 모두 UrlString에 적혀있는 상태
+//            어떤 메쏘드?get => Request에 담아주자
+            val request = Request.Builder()
+                .url(urlString)
+                .delete()
+                .header("X-Http-Token", ContextUtil.getLoginToken(context))
+                .build()
+
+            val client = OkHttpClient()
+
+            client.newCall(request).enqueue(object : Callback{
+
+                override fun onFailure(call: Call, e: IOException) {
+
+                }
+
+                override fun onResponse(call: Call, response: Response) {
+
+                    //response전체 > 본문 추출 > JSONobject 변환 > 이 기능을 불러낸 화면에 전달.
+                    val bodyString = response.body!!.string()
+
+                    //한글이 깨져있으니 jsonObj 변환
+                    val jsonObj = JSONObject(bodyString)
+
+                    Log.d("서버응답", jsonObj.toString())
+
+                    handler?.onResponse(jsonObj)
+
+                }
+
+
+            })
+
 
         }
 
