@@ -2,13 +2,17 @@ package com.nepplus.daily10minute_apiserverpractice_20210410
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.nepplus.daily10minute_apiserverpractice_20210410.adapters.ProjectAdapter
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Project
 import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
+import kotlinx.android.synthetic.main.activity_main.*
 import org.json.JSONObject
 
 class MainActivity : BaseActivity() {
 
    val mProjects = ArrayList<Project>()
+
+   lateinit var mProjectAdapter : ProjectAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +28,9 @@ class MainActivity : BaseActivity() {
    //서버에서 => 보여줄 프로젝트 목록이 어떤것들이 있는지 받아서 => project()형태로 변환해서 => mProjects에 하나하나 추가
 
         getProjectListFromServer()
+
+        mProjectAdapter = ProjectAdapter(mContext, R.layout.project_list_item, mProjects)
+        projectListView.adapter = mProjectAdapter
 
     }
 
@@ -52,6 +59,17 @@ class MainActivity : BaseActivity() {
                     mProjects.add(project)
 
                 }
+
+//                서버 통신이 어댑터 연결보다 먼저 실행되지만 => 실제로는 더 늦게 끝날 수도 있다.
+//                데이터 추가가 => 리스트뷰의 내용 변경일 수도 있다.
+
+                runOnUiThread {
+
+                    mProjectAdapter.notifyDataSetChanged()
+                }
+
+
+
 
 
             }
