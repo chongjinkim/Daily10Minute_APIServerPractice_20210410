@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
 import android.widget.TextView
+import com.bumptech.glide.Glide
 import com.nepplus.daily10minute_apiserverpractice_20210410.R
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Project
 import java.util.ArrayList
@@ -36,6 +37,8 @@ class ProjectAdapter(
        val projectProfileText = row.findViewById<TextView>(R.id.profileTitleText)
 
        projectProfileText.text = data.title
+
+       Glide.with(mContext).load(data.imageUrl).into(projectBackgroundImg)
 
         return row
     }
