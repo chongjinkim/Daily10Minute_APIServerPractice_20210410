@@ -2,6 +2,7 @@ package com.nepplus.daily10minute_apiserverpractice_20210410.datas
 
 import org.json.JSONObject
 import java.io.Serializable
+import java.util.ArrayList
 
 class Project (
         var id : Int,
@@ -10,6 +11,10 @@ class Project (
         var description : String,
         var onGoingUserCount : Int,
         var proofMethod : String) : Serializable {
+
+//태그 목록을 저장하기 위한 ArrayList => 멤버변수 추가
+
+    val tags = ArrayList<String>()
 
 // 보조 생성자 추가 => Project()만으로도 만들 수 있게
 
@@ -33,6 +38,21 @@ class Project (
           project.onGoingUserCount = jsonObj.getInt("ongoing_users_count")
           project.proofMethod = jsonObj.getString("proof_method")
 
+//태그 목록  (JSONArray[ ]) => 반복 파싱 => tag에 String으로 추가.
+
+           val tagsArr = jsonObj.getJSONArray("tags")
+
+// for문 이용 => 내용물을 하나씩 반복해서 파싱 + 목록에 담기
+
+           for(index in 0 until tagsArr.length()){
+
+               val tagObj = tagsArr.getJSONObject(index)
+
+               val title = tagObj.getString("title")
+
+               project.tags.add(title)
+
+           }
 
 //           완성된 project가 결과로 나이도록
 
