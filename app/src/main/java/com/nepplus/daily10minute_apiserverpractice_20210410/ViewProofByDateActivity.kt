@@ -5,7 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
-import com.nepplus.daily10minute_apiserverpractice_20210410.adapters.ProofAdapter
+import com.nepplus.daily10minute_apiserverpractice_20210410.adapreters.ProofAdapter
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Project
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Proof
 import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
