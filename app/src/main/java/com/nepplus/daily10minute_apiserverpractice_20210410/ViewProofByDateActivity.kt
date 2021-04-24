@@ -99,6 +99,10 @@ class ViewProofByDateActivity : BaseActivity() {
 
                 val proofsArr = projectObj.getJSONArray("proofs")
 
+//                기존에 담겨잇던 게시글은 전부 삭제 하고 나서 -> 새로 받아온 글들을 추가해주자.
+
+                mProofList.clear()
+
                 for(i in 0 until proofsArr.length()){
 
 
