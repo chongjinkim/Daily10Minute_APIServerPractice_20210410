@@ -1,4 +1,4 @@
-package com.nepplus.daily10minute_apiserverpractice_20210410.MyFcm
+package com.nepplus.daily10minute_apiserverpractice_20210410.fcm
 
 import android.os.Handler
 import android.os.Looper
