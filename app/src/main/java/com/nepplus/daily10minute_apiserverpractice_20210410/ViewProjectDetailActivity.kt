@@ -31,6 +31,8 @@ class ViewProjectDetailActivity : BaseActivity() {
 
             val myIntent = Intent(mContext, ViewProofByDateActivity::class.java)
 
+            myIntent.putExtra("project", mProject)
+
             startActivity(myIntent)
         }
 
