@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
 import kotlinx.android.synthetic.main.activity_view_proof_by_date.*
+import java.text.SimpleDateFormat
 import java.util.*
 
 class ViewProofByDateActivity : BaseActivity() {
@@ -31,6 +32,13 @@ class ViewProofByDateActivity : BaseActivity() {
 //선택된 년 / 월 / 일이 변수에 담겨져 있다. -> TextView에 반영을 해준다.
 
                     Log.d("선택된날짜", "${year}년 ${month}월, ${dayOfMonth}일")
+
+//                    선택일자를 멤버변수에 저장
+                    mSelectedDate.set(year,month,dayOfMonth)
+
+//                    SimpleDateFormat 이용, 날짜 -> String양식 가공
+                    val simpleDateFormat = SimpleDateFormat("yyyy-MM-dd")
+                    dateTxt.text = simpleDateFormat.format(mSelectedDate.time)
 
                 }
 
