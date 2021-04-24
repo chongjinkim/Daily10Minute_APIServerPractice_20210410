@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "486257203751",
+    "project_id": "daily10minutes2021424",
+    "storage_bucket": "daily10minutes2021424.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:486257203751:android:f4386cc78c6fc963c98c02",
+        "android_client_info": {
+          "package_name": "com.nepplus.daily10minute_apiserverpractice_20210410"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "486257203751-8b5otpf0sotdtvvgmjrrgr3p4g9vtrcu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyACBF6L6T_yRHDHIe2GkMa-4Ka6xJMN60Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "486257203751-8b5otpf0sotdtvvgmjrrgr3p4g9vtrcu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
