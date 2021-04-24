@@ -14,6 +14,9 @@ class Proof {
 
     val imageUrls = ArrayList<String>()
 
+    // 이 글을 누가 썼는지? 사용자 정보를 통째로 변수로
+      lateinit var writer : User
+
     companion object{
 
   //Json 한 덩어리 -> proof로 변환 가능
@@ -37,9 +40,14 @@ class Proof {
 
             proof.imageUrls.add(imagesArr.getJSONObject(i).getString("img_url"))
 
+
             }
+// 이 글의 작정자 정보도 파싱
+            proof.writer = User.getUserFromJson(jsonObj.getJSONObject("user"))
 
             return proof
+
+
 
         }
 

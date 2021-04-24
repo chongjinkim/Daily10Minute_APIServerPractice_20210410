@@ -11,6 +11,8 @@ class User {
 
     val profileImgUrls = ArrayList<String>()
 
+
+
     companion object{
 
         fun getUserFromJson(jsonObj : JSONObject) : User{
