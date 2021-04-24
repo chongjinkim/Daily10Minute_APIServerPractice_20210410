@@ -1,5 +1,6 @@
 package com.nepplus.daily10minute_apiserverpractice_20210410
 
+import android.content.Intent
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -25,6 +26,13 @@ class ViewProjectDetailActivity : BaseActivity() {
     }
 
     override fun setupEvents() {
+
+        viewProofBtn.setOnClickListener {
+
+            val myIntent = Intent(mContext, ViewProofByDateActivity::class.java)
+
+            startActivity(myIntent)
+        }
 
         giveUpBtn.setOnClickListener {
 
