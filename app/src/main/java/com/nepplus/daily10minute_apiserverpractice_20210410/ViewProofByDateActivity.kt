@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
+import com.nepplus.daily10minute_apiserverpractice_20210410.adapters.ProofAdapter
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Project
 import com.nepplus.daily10minute_apiserverpractice_20210410.datas.Proof
 import com.nepplus.daily10minute_apiserverpractice_20210410.utils.ServerUtil
@@ -21,6 +22,8 @@ class ViewProofByDateActivity : BaseActivity() {
     val mSelectedDate = Calendar.getInstance()
     
     val mProofList = ArrayList<Proof>()
+
+    lateinit var mProofAdapter : ProofAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -47,7 +50,7 @@ class ViewProofByDateActivity : BaseActivity() {
 
 //                    SimpleDateFormat 이용, 날짜 -> String양식 가공
 //                    2020년 5월 3일의양식으로 출력
-                    val simpleDateFormat = SimpleDateFormat("yyyy년-M월-d일")
+                    val simpleDateFormat = SimpleDateFormat("yyyy년 M월 d일")
                     dateTxt.text = simpleDateFormat.format(mSelectedDate.time)
 
 
@@ -76,6 +79,9 @@ class ViewProofByDateActivity : BaseActivity() {
     override fun setValues() {
 
         mProject = intent.getSerializableExtra("project") as Project
+
+        mProofAdapter = ProofAdapter(mContext, R.layout.proof_list_item, mProofList)
+        proofListView.adapter = mProofAdapter
     }
 
 // 서버에서, 선택된 날짜의 글을 받아와 주는 함수
@@ -99,7 +105,19 @@ class ViewProofByDateActivity : BaseActivity() {
 //                    인증글 JSON -> Proof 객체로 변환 -> mProofList 에 추가.
                    mProofList.add(Proof.getProofFromJson(proofsArr.getJSONObject(i)))
 
+
+
                 }
+
+//                나중에 게시글 목록을 추가로 불러옴 -> 리스트뷰 내용 변경 -> 어댑터 새로 변경
+
+                runOnUiThread {
+
+                    mProofAdapter.notifyDataSetChanged()
+
+                }
+
+
             }
 
 
