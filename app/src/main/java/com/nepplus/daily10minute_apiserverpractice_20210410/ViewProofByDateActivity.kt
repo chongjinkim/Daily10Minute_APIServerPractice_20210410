@@ -27,7 +27,7 @@ class ViewProofByDateActivity : BaseActivity() {
 
 //선택된 년 / 월 / 일이 변수에 담겨져 있다. -> TextView에 반영을 해준다.
 
-                    Log.d("선택된날짜", "${year}년", "${month}월", "${dayOfMonth}일")
+                    Log.d("선택된날짜", "${year}년 ${month}월, ${dayOfMonth}일")
 
                 }
 
