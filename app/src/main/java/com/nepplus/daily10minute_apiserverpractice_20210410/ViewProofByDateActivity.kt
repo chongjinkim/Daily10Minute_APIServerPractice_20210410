@@ -6,8 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.DatePicker
 import kotlinx.android.synthetic.main.activity_view_proof_by_date.*
+import java.util.*
 
 class ViewProofByDateActivity : BaseActivity() {
+
+    val mSelectedDate = Calendar.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -36,7 +39,10 @@ class ViewProofByDateActivity : BaseActivity() {
 
 //            실제로 달력 띄우기(alertDiaglog)
 
-            val datePickerDialog = DatePickerDialog(mContext, dateSetListener, 2021, 4, 24)
+            val datePickerDialog = DatePickerDialog(mContext, dateSetListener,
+                mSelectedDate.get(Calendar.YEAR),
+                mSelectedDate.get(Calendar.MONTH),
+                mSelectedDate.get(Calendar.DAY_OF_MONTH))
 
              datePickerDialog.show()
 
