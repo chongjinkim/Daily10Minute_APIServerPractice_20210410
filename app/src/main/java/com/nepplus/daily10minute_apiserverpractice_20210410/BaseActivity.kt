@@ -1,5 +1,6 @@
 package com.nepplus.daily10minute_apiserverpractice_20210410
 
+import android.os.Bundle
 import androidx.appcompat.app.ActionBar
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
@@ -12,6 +13,25 @@ abstract class BaseActivity : AppCompatActivity() {
 //모든 액티비티는 이 2개를 무조건 구현을 한다.
     abstract fun setupEvents()
     abstract fun setValues()
+
+//onCreate -> 일부 내용 변경해보자. -> 상속받은 함수 내용 변경 : override
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+//        BaseActivity를 상속받는 클래스들은 => 화면이 onCreate 될 때 => 액션바 세팅도 되도록 한다.
+//        무조건 세팅하는게 아니라 supportActionBar가 null 아닐대 (실제가 있을때) 만 실행되도록
+
+       supportActionBar?.let {
+
+// 기본 액션바가 존재할때만 LET{} 내용이 실행됨(코틀린 문법)
+           setCustomActionBar()
+
+       }
+
+    }
+
+
 
 //    커스텀 액션바를 적용해주는 기능(함수)
 
